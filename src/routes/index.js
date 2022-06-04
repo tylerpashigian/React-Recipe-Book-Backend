@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+const router = express.Router();
 
 router.get('/heartbeat', function (req, res, next) {
   res.send('Server is up and runniing');
 });
 
-module.exports = router;
+export default router;

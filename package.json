@@ -5,15 +5,11 @@
   "scripts": {
     "build": "npm-run-all clean transpile",
     "clean": "rimraf dist",
-    "server": "node ./dist/bin/www",
-    "start": "npm-run-all build server",
-    "transpile": "babel ./src --out-dir dist",
-    "watch": "nodemon"
+    "start": "node ./dist/bin/www",
+    "transpile": "tsc",
+    "watch": "nodemon ./dist/bin/www"
   },
   "dependencies": {
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -23,23 +19,12 @@
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "jest": "^28.1.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "nodemonConfig": {
-    "exec": "npm start",
-    "watch": [
-      "src/*",
-      "public/*"
-    ],
-    "ignore": [
-      "**/__tests__/**",
-      "*.test.js",
-      "*.spec.js"
-    ]
+    "@types/cookie-parser": "^1.4.3",
+    "@types/debug": "^4.1.7",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.39",
+    "jest": "^28.1.0",
+    "typescript": "^4.7.3"
   }
 }

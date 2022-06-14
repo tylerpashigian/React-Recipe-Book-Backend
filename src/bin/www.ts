@@ -10,6 +10,11 @@ import http from 'http';
 const debug = debugLib('recipebook:server');
 debug.enabled = true;
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import { connectToServer } from '../database/connect';
+
 /**
  * Get port from environment and store in Express.
  */
@@ -78,5 +83,10 @@ function onError(error: any) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr?.port;
+
+  connectToServer(function (err: any) {
+    if (err) console.error(err);
+  });
+
   debug('Listening on ' + bind);
 }
